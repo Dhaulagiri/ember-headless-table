@@ -21,6 +21,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
       - uses: ./.github/actions/pnpm
 
 
@@ -33,6 +38,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/pnpm
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
       - name: Lint
         run: pnpm lint
 
@@ -59,6 +69,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/pnpm
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
       - uses: ./.github/actions/assert-build
 
 
@@ -85,15 +100,13 @@ jobs:
       - name: 'Change TS to ${{ matrix.typescript-scenario }}'
         run: 'pnpm add --save-dev ${{ matrix.typescript-scenario}}'
         working-directory: ./test-app
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
       - name: 'Type checking'
-
-        run: |
-          pnpm --filter test-app exec tsc -v;
-          pnpm --filter test-app exec glint --version;
-          pnpm --filter test-app exec glint;
-
-
-
+        run: 'pnpm _turbo --filter test-app typecheck;'
 
 
   default_tests:
@@ -104,8 +117,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/pnpm
-      - uses: ./.github/actions/download-built-package
-      - run: pnpm --filter test-app test:ember
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
+      - run: pnpm _turbo --filter test-app test
 
   floating_tests:
     name: Floating Deps Test
@@ -190,10 +207,12 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm
-      - uses: ./.github/actions/download-built-package
-      - run: pnpm glint
-        working-directory: docs-app
-
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
+      - run: pnpm _turbo --filter docs-app typecheck
 
 
   PublishDocstoCloudflarePages:
@@ -211,8 +230,12 @@ jobs:
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm
-      - uses: ./.github/actions/download-built-package
-      - run: pnpm build:docs
+      - name: TurboRepo local server
+        uses: felixmosh/turborepo-gh-artifacts@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          server-token: foo-123
+      - run: pnpm _turbo --filter docs-api build
       - name: Publish to Cloudflare Pages
         id: publishStep
         uses: cloudflare/pages-action@1

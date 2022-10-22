@@ -60,7 +60,6 @@
   },
   "scripts": {
     "build": "rollup --config ./rollup.config.mjs",
-    "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:hbs": "ember-template-lint . --no-error-on-unmatched-pattern",
     "lint:js": "eslint . --cache",

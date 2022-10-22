@@ -6,23 +6,23 @@
   "license": "MIT",
   "author": "",
   "scripts": {
-    "build": "pnpm --filter ember-headless-table build",
-    "build:docs": "pnpm build:docs-app && pnpm build:docs-api && cp ./docs-api/dist ./docs-app/dist/api -r",
-    "build:docs-app": "pnpm --filter docs-app build",
-    "build:docs-api": "pnpm --filter docs-api docs:build",
+    "prepare": "pnpm build",
+    "build": "pnpm _turbo --filter ember-headless-table build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
     "start:tests": "pnpm --filter ember-headless-table start",
     "start:addon": "pnpm --filter ember-headless-table start --no-watch.clearScreen",
     "start:docs-api": "pnpm --filter 'docs-api' docs:watch --preserveWatchOutput",
     "start:docs-app": "pnpm --filter 'docs-app' start -p 4201",
     "ci:update": "npx ember-ci-update",
-    "test": "pnpm --filter ember-headless-table test",
-    "lint": "pnpm --filter '*' lint",
-    "lint:fix": "pnpm --filter '*' lint:fix"
+    "_turbo": "pnpm turbo --api='http://127.0.0.1:9080' --token=foo-123 --team=foo",
+    "test": "pnpm _turbo test",
+    "lint": "pnpm _turbo lint",
+    "lint:fix": "pnpm _turbo lint --fix"
   },
   "devDependencies": {
     "concurrently": "^7.2.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "turbo": "^1.6.1"
   },
   "pnpm": {
     "overrides": {

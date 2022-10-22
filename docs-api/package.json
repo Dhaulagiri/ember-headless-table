@@ -1,13 +1,17 @@
 {
   "name": "docs-api",
   "version": "0.0.0",
-  "private": true,
   "scripts": {
     "start": "pnpm docs:watch",
-    "docs:build": "typedoc --options ./typedoc.config.json",
+    "build": "typedoc --options ./typedoc.config.json && mkdir -p ../docs-app/dist/api && cp ./dist ../docs-app/dist/api -r",
     "docs:watch": "typedoc --options ./typedoc.config.json --watch"
   },
+  "publishConfig": {
+    "registry": "https://noop.noop.noop"
+  },
   "devDependencies": {
+    "docs-app": "workspace:../docs-app",
+    "ember-headless-table": "workspace:../ember-headless-table",
     "typedoc": "^0.23.16",
     "typedoc-github-wiki-theme": "^1.0.1",
     "typedoc-gitlab-wiki-theme": "^1.0.0",
