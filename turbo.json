@@ -1,6 +1,9 @@
 {
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
+    "//#resync": {
+      "cache": false
+    },
     "dev": {
       // A package's `build` script depends on that package's
       // dependencies and devDependencies
@@ -33,7 +36,7 @@
       // But for ember apps, they build themselves during
       // test execution, so we can only get away with only
       // building our dependencies
-      "dependsOn": ["^build"]
+      "dependsOn": ["//#resync", "^build"]
     },
     "lint": {
       // A package's `lint` script has no dependencies and

@@ -6,6 +6,7 @@
   "license": "MIT",
   "author": "",
   "scripts": {
+    "resync": "pnpm i",
     "prepare": "pnpm build",
     "build": "pnpm _turbo --filter ember-headless-table build",
     "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
