@@ -2502,7 +2502,7 @@ packages:
       '@embroider/macros': 1.8.3
       broccoli-funnel: 3.0.8
       ember-cli-babel: 7.26.11
-      ember-source: 4.7.0_6zc4kxld457avlfyhj3lzsljlm
+      ember-source: 4.7.0_@babel+core@7.19.3
     transitivePeerDependencies:
       - supports-color
 
@@ -3442,6 +3442,11 @@ packages:
       - supports-color
     dev: true
 
+  /@types/ember-resolver/5.0.11:
+    resolution: {integrity: sha512-2BL9d8kBdNUO9Je6KBF7Q34BSwbQG6vzCzTeSopt8FAmLDfaDU9xDDdyZobpfy9GR36mCSeG9b9wr4bgYh/MYw==}
+    dependencies:
+      '@types/ember__object': 4.0.4
+
   /@types/ember-resolver/5.0.11_@babel+core@7.19.3:
     resolution: {integrity: sha512-2BL9d8kBdNUO9Je6KBF7Q34BSwbQG6vzCzTeSopt8FAmLDfaDU9xDDdyZobpfy9GR36mCSeG9b9wr4bgYh/MYw==}
     dependencies:
@@ -3605,7 +3610,7 @@ packages:
   /@types/ember__debug/4.0.1_@babel+core@7.19.6:
     resolution: {integrity: sha512-qrKk6Ujh6oev7TSB0eB7AEmQWKCt5t84k/K3hDvJXUiLU3YueN0kyt7aPoIAkVjC111A9FqDugl9n60+N5yeEw==}
     dependencies:
-      '@types/ember-resolver': 5.0.11_@babel+core@7.19.6
+      '@types/ember-resolver': 5.0.11
       '@types/ember__object': 4.0.4_@babel+core@7.19.6
     transitivePeerDependencies:
       - '@babel/core'
@@ -3628,7 +3633,7 @@ packages:
   /@types/ember__engine/4.0.2_@babel+core@7.19.6:
     resolution: {integrity: sha512-x9c8LtRpYwQnyUiUbGpF2+zrZiA0G3e0lPsprghllWEabnIyvN+GMdtnvt4DmpGQVeUz6JKVdoPAmENBUTTcyg==}
     dependencies:
-      '@types/ember-resolver': 5.0.11_@babel+core@7.19.6
+      '@types/ember-resolver': 5.0.11
       '@types/ember__object': 4.0.4_@babel+core@7.19.6
       '@types/ember__owner': 4.0.0
     transitivePeerDependencies:
@@ -6540,7 +6545,7 @@ packages:
     dev: true
 
   /concat-map/0.0.1:
-    resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
   /concurrently/7.4.0:
     resolution: {integrity: sha512-M6AfrueDt/GEna/Vg9BqQ+93yuvzkSKmoTixnwEJkH0LlcGrRC2eCmjeG1tLLHIYfpYJABokqSGyMcXjm96AFA==}
